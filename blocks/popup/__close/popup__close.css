@@ -1,0 +1,11 @@
+.popup__close {
+    position: absolute;
+    top: -32px;
+    right: -32px;
+    fill: white;
+}
+
+.popup__close:hover {
+    fill: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}

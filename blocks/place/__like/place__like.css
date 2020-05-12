@@ -1,0 +1,8 @@
+.place__like {
+    border: none;
+    background: url(../../../images/place-like.svg) center no-repeat;
+    padding: 0;
+    background-size: 100%;
+    width: 21px;
+    height: 19px;
+}
