@@ -12,10 +12,11 @@
     border: none;
     box-sizing: border-box;
     border-radius: 2px;
-    margin-top: 48px;
+    margin-top: 15px;
 }
 
 .popup__button:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
+    transition: 0.4s;
 }

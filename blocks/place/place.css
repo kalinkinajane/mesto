@@ -5,8 +5,8 @@
 .place {
     background-color: #FFFFFF;
     width: 100%;
-    min-height: 361px;
     border-radius: 10px;
+    padding-bottom: 24px;
 }
 
 @media screen and (max-width: 499px) {

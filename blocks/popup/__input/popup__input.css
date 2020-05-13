@@ -1,10 +1,13 @@
-.popup__input {
+.popup__input-container{
     width: 100%;
-    padding: 0;
+   padding: 0 0 9px 0;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin: 0 0 27px 0;
+}
+.popup__input-container:last-child{
+    margin-bottom: 0;
 }
