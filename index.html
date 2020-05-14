@@ -18,64 +18,64 @@
         <img class="profile__avatar" src="./images/image-avatar.jpg" alt="Жак-Ив Кусто">
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__button-edit" type="button"></button>
+            <button class="profile__button-edit" type="button" aria-label="Редактировать"></button>
             <p class="profile__job">Исследователь океана</p>
         </div>
-        <button class="profile__button-add" type="button"></button>
+        <button class="profile__button-add" type="button" aria-label="Добавить"></button>
     </section>
     <section class="places page__content">
         <div class="place">
             <img class="place__image" src="./images/red-square.jpg" alt="красная площадь">
             <div class="place__text">
                 <h2 class="place__title">Москва</h2>
-                <button class="place__like" type="button"></button>
+                <button class="place__like" type="button" aria-label="Нравится"></button>
             </div>
         </div>
         <div class="place">
             <img class="place__image" src="./images/baikal.jpg" alt="Байкал">
             <div class="place__text">
                 <h2 class="place__title">Байкал</h2>
-                <button class="place__like" type="button"></button>
+                <button class="place__like" type="button" aria-label="Нравится"></button>
             </div>
         </div>
         <div class="place">
             <img class="place__image" src="./images/kamchatka.jpg" alt="Камчатка">
             <div class="place__text">
                 <h2 class="place__title">Камчатка</h2>
-                <button class="place__like" type="button"></button>
+                <button class="place__like" type="button" aria-label="Нравится"></button>
             </div>
         </div>
         <div class="place">
             <img class="place__image" src="./images/karelia.jpg" alt="Карелия">
             <div class="place__text">
                 <h2 class="place__title">Карелия</h2>
-                <button class="place__like" type="button"></button>
+                <button class="place__like" type="button" aria-label="Нравится"></button>
             </div>
         </div>
         <div class="place">
             <img class="place__image" src="./images/monrepo-vyborg.jpg" alt="Выборг Парк монрепо">
             <div class="place__text">
                 <h2 class="place__title">Выборг</h2>
-                <button class="place__like" type="button"></button>
+                <button class="place__like" type="button" aria-label="Нравится"></button>
             </div>
         </div>
         <div class="place">
             <img class="place__image" src="./images/primorsk-krai.jpg" alt="Приморский край">
             <div class="place__text">
                 <h2 class="place__title">Приморский край</h2>
-                <button class="place__like" type="button"></button>
+                <button class="place__like" type="button" aria-label="Нравится"></button>
             </div>
         </div>
     </section>
     <section class="popup">
         <form class="popup__container" name="edit-profile">
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <fieldset class="popup__input-container">
                 <input type="text" placeholder="Имя" name="name"
-                    class="popup__input-container popup__input-container_type_name" required>
+                    class="popup__item popup__item_type_name" required>
                 <input type="text" placeholder="О себе" name="job"
-                    class="popup__input-container popup__input-container_type_job" required>
+                    class="popup__item popup__item_type_job" required>
             </fieldset>
             <button class="popup__button" type="submit">Сохранить</button>
         </form>
