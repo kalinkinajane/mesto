@@ -39,28 +39,28 @@ popupClose.addEventListener('click', toggleForm);
 /* Массив карточек*/
 const initialCards = [
     {
-        name: 'Приморский край',
-        link: '../images/primorsk-krai.jpg'
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     },
     {
-        name: 'Выборг',
-        link: '../images/monrepo-vyborg.jpg'
-    },
-    {
-        name: 'Карелия',
-        link: '../images/karelia.jpg'
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
         name: 'Камчатка',
-        link: '../images/kamchatka.jpg'
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
     },
     {
-        name: 'Байкал',
-        link: '../images/baikal.jpg'
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-        name: 'Красная площадь',
-        link: '../images/red-square.jpg'
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
 ];
 const placesSection = document.querySelector('.places');
@@ -83,7 +83,7 @@ function addPlace(item) {
         const placeItem = deleteButton.closest('.place');
         placeItem.remove();
     });
-    /* Щткрытие popup-view с картинкой */
+    /* oткрытие popup-view с картинкой */
     placeElement.querySelector('.place__image').addEventListener('click', function (evt) { 
         evt.target.classList.toggle('popup-view__open');
         popupImage.src = item.link;
