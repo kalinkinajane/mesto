@@ -1,0 +1,4 @@
+.place__like_active {
+    opacity: 1;
+   background: url(../../../../images/like-active.png) center no-repeat;
+  }

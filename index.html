@@ -17,55 +17,16 @@
     <section class="profile page__content">
         <img class="profile__avatar" src="./images/image-avatar.jpg" alt="Жак-Ив Кусто">
         <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <div class=profile__conteiner>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__button-edit" type="button" aria-label="Редактировать"></button>
+            </div>
             <p class="profile__job">Исследователь океана</p>
         </div>
         <button class="profile__button-add" type="button" aria-label="Добавить"></button>
     </section>
     <section class="places page__content">
-        <div class="place">
-            <img class="place__image" src="./images/red-square.jpg" alt="красная площадь">
-            <div class="place__text">
-                <h2 class="place__title">Москва</h2>
-                <button class="place__like" type="button" aria-label="Нравится"></button>
-            </div>
-        </div>
-        <div class="place">
-            <img class="place__image" src="./images/baikal.jpg" alt="Байкал">
-            <div class="place__text">
-                <h2 class="place__title">Байкал</h2>
-                <button class="place__like" type="button" aria-label="Нравится"></button>
-            </div>
-        </div>
-        <div class="place">
-            <img class="place__image" src="./images/kamchatka.jpg" alt="Камчатка">
-            <div class="place__text">
-                <h2 class="place__title">Камчатка</h2>
-                <button class="place__like" type="button" aria-label="Нравится"></button>
-            </div>
-        </div>
-        <div class="place">
-            <img class="place__image" src="./images/karelia.jpg" alt="Карелия">
-            <div class="place__text">
-                <h2 class="place__title">Карелия</h2>
-                <button class="place__like" type="button" aria-label="Нравится"></button>
-            </div>
-        </div>
-        <div class="place">
-            <img class="place__image" src="./images/monrepo-vyborg.jpg" alt="Выборг Парк монрепо">
-            <div class="place__text">
-                <h2 class="place__title">Выборг</h2>
-                <button class="place__like" type="button" aria-label="Нравится"></button>
-            </div>
-        </div>
-        <div class="place">
-            <img class="place__image" src="./images/primorsk-krai.jpg" alt="Приморский край">
-            <div class="place__text">
-                <h2 class="place__title">Приморский край</h2>
-                <button class="place__like" type="button" aria-label="Нравится"></button>
-            </div>
-        </div>
+    
     </section>
     <section class="popup">
         <form class="popup__container" name="edit-profile">
@@ -80,9 +41,41 @@
             <button class="popup__button" type="submit">Сохранить</button>
         </form>
     </section>
+    <section class="popup-add">
+        <form class="popup-add__container" name="add-place">
+            <button class="popup-add__close" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup-add__title">Новое место</h3>
+            <fieldset class="popup-add__input-container">
+                <input type="text" placeholder="Название" name="name"
+                    class="popup-add__item popup__item_type_place-name" required>
+                <input type="text" placeholder="Cсылка на картинку" name="job"
+                    class="popup-add__item popup__item_type_link" required>
+            </fieldset>
+            <button class="popup-add__button" type="submit">Создать</button>
+        </form>
+    </section>
+    <section class="popup-view">
+        <div class ="popup-view__container">
+            <button class="popup-view__close" type="button" aria-label="Закрыть"></button>
+            <figure>
+                <img class="popup-view__image">
+                <figcaption class="popup-view__caption"></figcaption>
+            </figure>
+        </div>
+    </section>
     <footer class="footer page__content">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <template class="place-element">
+        <div class="place">
+            <button class="place__remove" type="button" aria-label="Удалить"></button>
+            <img class="place__image">
+            <div class="place__text">
+                <h2 class="place__title"></h2>
+                <button class="place__like" type="button" aria-label="Нравится"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/script.js"></script>
 </body>
 
