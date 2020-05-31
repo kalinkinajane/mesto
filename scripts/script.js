@@ -3,14 +3,12 @@ const page = document.querySelector('.page');
 const popup = page.querySelector('.popup');
 const buttonEdit = page.querySelector('.profile__button-edit');
 const popupClose = page.querySelector('.popup__close');
-let inputName = page.querySelector('.popup__item_type_name');
-let inputJob = page.querySelector('.popup__item_type_job');
-let profileName = page.querySelector('.profile__name');
-let profileJob = page.querySelector('.profile__job');
-const addButton = page.querySelector('.popup__button');
+const inputName = page.querySelector('.popup__item_type_name');
+const inputJob = page.querySelector('.popup__item_type_job');
+const profileName = page.querySelector('.profile__name');
+const profileJob = page.querySelector('.profile__job');
 const formElement = page.querySelector('.popup__container');
 const formAddElement = page.querySelector('.popup-add__container');
-
 
 
 /*функция открытия и закрытия блока popup*/
@@ -30,11 +28,20 @@ function formSubmitHandler(evt) {
     profileJob.textContent = inputJob.value;
     toggleForm()
 }
-/*Слушатели собитий */
+/*Слушатели  событий */
 formElement.addEventListener('submit', formSubmitHandler);
 buttonEdit.addEventListener('click', toggleForm);
 popupClose.addEventListener('click', toggleForm);
 
+/*функция открытия и закрытия блока popup-view__image*/
+const popupView = document.querySelector('.popup-view');
+const closeView = document.querySelector('.popup-view__close');
+function togglePopupView() {
+    popupView.classList.toggle('popup-view__open');
+    if ( popupView.classList.contains('popup-view__open')) {
+    }
+};
+closeView.addEventListener('click', togglePopupView);
 
 /* Массив карточек*/
 const initialCards = [
@@ -64,13 +71,13 @@ const initialCards = [
     },
 ];
 const placesSection = document.querySelector('.places');
-const plaseTemplate = document.querySelector('.place-element').content;
+const plaсeTemplate = document.querySelector('.place-element').content;
 const popupImage = document.querySelector('.popup-view__image');
 const popupCaption = document.querySelector('.popup-view__caption');
 
 /* Функция создания карточек plece*/
 function addPlace(item) {
-    const placeElement = plaseTemplate.cloneNode(true);
+    const placeElement = plaсeTemplate.cloneNode(true);
     placeElement.querySelector('.place__image').src = item.link;
     placeElement.querySelector('.place__title').textContent = item.name;
     placeElement.querySelector('.place__like').addEventListener('click', function (evt) {
@@ -111,30 +118,22 @@ buttonAdd.addEventListener('click', togglePopup);
 closePopup.addEventListener('click', togglePopup);
 
 const inputPlace = page.querySelector('.popup__item_type_place-name');
-const inputlink = page.querySelector('.popup__item_type_link');
+const inputLink = page.querySelector('.popup__item_type_link');
 /*Добавление карточки */
 formAddElement.addEventListener('submit', function (evt) {
     evt.preventDefault();
     /*Добавление элемента в массив */
-    let addInitialCards = {
+    const addInitialCards = {
         name: '',
         link: ''
     }
     addInitialCards.name = inputPlace.value;
-    addInitialCards.link = inputlink.value;
+    addInitialCards.link = inputLink.value;
     initialCards.unshift(addInitialCards);
     addPlace(addInitialCards);
     togglePopup();
 });
 
-/*функция открытия и закрытия блока popup-view__image*/
-const popupView = document.querySelector('.popup-view');
-const cloceView = document.querySelector('.popup-view__close');
-function togglePopupView() {
-    popupView.classList.toggle('popup-view__open');
-    if ( popupView.classList.contains('popup-view__open')) {
-    }
-};
-cloceView.addEventListener('click', togglePopupView);
+
 
 
