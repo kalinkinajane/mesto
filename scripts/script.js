@@ -71,13 +71,13 @@ const initialCards = [
     },
 ];
 const placesSection = document.querySelector('.places');
-const plaсeTemplate = document.querySelector('.place-element').content;
+const placeTemplate = document.querySelector('.place-element').content;
 const popupImage = document.querySelector('.popup-view__image');
 const popupCaption = document.querySelector('.popup-view__caption');
 
 /* Функция создания карточек plece*/
 function addPlace(item) {
-    const placeElement = plaсeTemplate.cloneNode(true);
+    const placeElement = placeTemplate.cloneNode(true);
     placeElement.querySelector('.place__image').src = item.link;
     placeElement.querySelector('.place__title').textContent = item.name;
     placeElement.querySelector('.place__like').addEventListener('click', function (evt) {
