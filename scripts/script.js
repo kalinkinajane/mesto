@@ -58,6 +58,7 @@ function closeForm(popup) {
     popup.classList.remove('popup_open');
     inputPlace.value = '';
     inputLink.value = '';
+    removeToggleFormEsc();
 }
 
 /* Обработчик отправки формы */
