@@ -19,47 +19,50 @@
         <div class="profile__info">
             <div class=profile__conteiner>
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__button-edit" type="button" aria-label="Редактировать"></button>
+                <button class="profile__button-edit" type="button" aria-label="Редактировать"></button>
             </div>
             <p class="profile__job">Исследователь океана</p>
         </div>
         <button class="profile__button-add" type="button" aria-label="Добавить"></button>
     </section>
     <section class="places page__content">
-    
     </section>
-    <section class="popup">
-        <form class="popup__container" name="edit-profile">
+    <section class="popup popup-profile">
+        <div class="popup__container">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
-            <fieldset class="popup__input-container">
-                <input type="text" placeholder="Имя" name="name"
-                    class="popup__item popup__item_type_name" required>
-                <input type="text" placeholder="О себе" name="job"
-                    class="popup__item popup__item_type_job" required>
-            </fieldset>
-            <button class="popup__button" type="submit">Сохранить</button>
-        </form>
+            <form class="popup__form" name="edit-name" novalidate>
+                <input type="text" id="name" name="name" class="popup__input popup__input_type_name" minlength="2"
+                    maxlength="40" required placeholder="Имя">
+                <span id="name-error" class="popup__error"></span>
+                <input type="text" id="job" name="job" class="popup__input popup__input_type_job" minlength="2"
+                    maxlength="200" required placeholder="О себе">
+                <span id="job-error" class="popup__error"></span>
+                <button class="popup__button" type="submit">Сохранить</button>
+            </form>
+        </div>
     </section>
-    <section class="popup-add">
-        <form class="popup-add__container" name="add-place">
-            <button class="popup-add__close" type="button" aria-label="Закрыть"></button>
-            <h3 class="popup-add__title">Новое место</h3>
-            <fieldset class="popup-add__input-container">
-                <input type="text" placeholder="Название" name="name"
-                    class="popup-add__item popup__item_type_place-name" required>
-                <input type="text" placeholder="Cсылка на картинку" name="job"
-                    class="popup-add__item popup__item_type_link" required>
-            </fieldset>
-            <button class="popup-add__button" type="submit">Создать</button>
-        </form>
+    <section class="popup popup-add">
+        <div class="popup__container popup__container_add">
+            <button class="popup__close popup__close_add" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__title">Новое место</h3>
+            <form class="popup__form" name="add-place" novalidate>
+                <input type="text" id="place-name" name="place-name" class="popup__input popup__input_type_place-name"
+                    minlength="1" maxlength="30" required placeholder="Название">
+                <span id="place-name-error" class="popup__error"></span>
+                <input type="url" id="link" name="link" class="popup__input popup__input_type_link" required
+                    placeholder="Cсылка на картинку">
+                <span id="link-error" class="popup__error"></span>
+                <button class="popup__button popup__button_disabled" type="submit">Создать</button>
+            </form>
+        </div>
     </section>
-    <section class="popup-view">
-        <div class ="popup-view__container">
-            <button class="popup-view__close" type="button" aria-label="Закрыть"></button>
+    <section class="popup popup-view">
+        <div class="popup__container-view">
+            <button class="popup__close popup__close_view" type="button" aria-label="Закрыть"></button>
             <figure>
-                <img class="popup-view__image" src="." alt="изображение">
-                <figcaption class="popup-view__caption"></figcaption>
+                <img class="popup__image" src="." alt="изображение">
+                <figcaption class="popup__caption"></figcaption>
             </figure>
         </div>
     </section>
@@ -76,6 +79,7 @@
             </div>
         </div>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/script.js"></script>
 </body>
 

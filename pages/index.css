@@ -8,9 +8,3 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_open/popup_open.css);
-@import url(../blocks/popup-add/popup-add.css);
-@import url(../blocks/popup-add/_open/popup-add_open.css);
-@import url(../blocks/popup-view/popup-view.css);
-@import url(../blocks/popup-view/__open/popup-view__open.css);
-
-

@@ -1,4 +1,5 @@
-.popup__item{
+@import url(../__input/_type_error/popup__input_type_error.css);
+.popup__input {
     width: 100%;
     padding: 0 0 9px 0;
     font-style: normal;
@@ -6,6 +7,6 @@
     font-size: 14px;
     line-height: 17px;
     border: none;
-    margin: 0 0 29px 0;
+    margin: 29px 0 0 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
