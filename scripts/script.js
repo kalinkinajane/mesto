@@ -47,38 +47,6 @@ const placesSection = document.querySelector('.places');
 const placeTemplate = document.querySelector('.place-element').content;
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
-/*функция открытия блоков popup*/
-function openForm(popup) {
-    popup.classList.add('popup_open');
-    inputName.value = profileName.textContent;
-    inputJob.value = profileJob.textContent;
-}
-/*функция закрытия блоков popup*/
-function closeForm(popup) {
-    popup.classList.remove('popup_open');
-    inputPlace.value = '';
-    inputLink.value = '';
-    removeToggleFormEsc();
-}
-
-/* Обработчик отправки формы */
-function formSubmitHandler(evt) {
-    evt.preventDefault();
-    profileName.textContent = inputName.value;
-    profileJob.textContent = inputJob.value;
-    closeForm(popupProfile);
-}
-/*Слушатели  событий */
-formElement.addEventListener('submit', formSubmitHandler);
-/*открыть и закрыть popup-profile */
-buttonEdit.addEventListener('click', () => openForm(popupProfile));
-popupClose.addEventListener('click', () => closeForm(popupProfile));
-/*функция открытия и закрытия блока popup-view__image*/
-closeView.addEventListener('click', () => closeForm(popupView));
-/*функция открытия и закрытия блока popup_add*/
-buttonAdd.addEventListener('click', () => openForm(popupAdd));
-closePopup.addEventListener('click', () => closeForm(popupAdd));
-
 /* Функция создания карточек plece*/
 function addPlace(item) {
     const placeElement = placeTemplate.cloneNode(true);
@@ -123,8 +91,8 @@ function formAddCard(evt) {
     addPlace(addInitialCards);
     closeForm(popupAdd);
 }
-
 formAddElement.addEventListener('submit', formAddCard);
+
 /*Закрытие popup-ов при нажатии Esc */
 function toggleFormEsc(evt) {
     const openPopup = document.querySelector('.popup_open');
@@ -134,11 +102,41 @@ function toggleFormEsc(evt) {
     document.removeEventListener('keydown', toggleFormEsc);
 };
 
-document.addEventListener('keydown', toggleFormEsc);
-
 /*Закрытие popup-ов при на оврлей */
 document.addEventListener('click', function (evt) {
     if (evt.target.classList.contains('popup_open')) {
         evt.target.classList.remove('popup_open')
     }
 });
+/*функция открытия блоков popup*/
+function openForm(popup) {
+    popup.classList.add('popup_open');
+    inputName.value = profileName.textContent;
+    inputJob.value = profileJob.textContent;
+    document.addEventListener('keydown', toggleFormEsc);
+}
+/*функция закрытия блоков popup*/
+function closeForm(popup) {
+    popup.classList.remove('popup_open');
+    inputPlace.value = '';
+    inputLink.value = '';
+}
+
+/* Обработчик отправки формы */
+function formSubmitHandler(evt) {
+    evt.preventDefault();
+    profileName.textContent = inputName.value;
+    profileJob.textContent = inputJob.value;
+    closeForm(popupProfile);
+}
+/*Слушатели  событий */
+formElement.addEventListener('submit', formSubmitHandler);
+/*открыть и закрыть popup-profile */
+buttonEdit.addEventListener('click', () => openForm(popupProfile));
+popupClose.addEventListener('click', () => closeForm(popupProfile));
+/*функция открытия и закрытия блока popup-view__image*/
+closeView.addEventListener('click', () => closeForm(popupView));
+/*функция открытия и закрытия блока popup_add*/
+buttonAdd.addEventListener('click', () => openForm(popupAdd));
+closePopup.addEventListener('click', () => closeForm(popupAdd));
+
