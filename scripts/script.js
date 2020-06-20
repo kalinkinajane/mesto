@@ -35,7 +35,7 @@ function createPlace(link, name) {
     placeImage.src = link;
     placeTitle.textContent = name;
 
-    placeImage.addEventListener('click', evt => viewImage(link, name))
+    placeImage.addEventListener('click', () => toggleImagePopup(link, name));
     placeLike.addEventListener('click', likePlace);
     deleteButton.addEventListener('click', deletePlace);
     return placeElement;
@@ -129,6 +129,7 @@ function formAddCard(evt) {
 formAddElement.addEventListener('submit', formAddCard);
 buttonAdd.addEventListener('click', toggleAddPopup);
 closePopup.addEventListener('click', toggleAddPopup);
+
 /*функция oткрыть и закрыть popup-Image */
 function toggleImagePopup(link, name) {
     if (popupView.classList.contains('popup_open')) {
@@ -141,7 +142,7 @@ function toggleImagePopup(link, name) {
     popupCaption.textContent = name;
     document.addEventListener('keydown', toggleImageEsc);
 }
-popupImage.addEventListener('click', toggleImagePopup);
+
 closeView.addEventListener('click', toggleImagePopup);
 
 /*Закрытие popup-ов при нажатии Esc */
