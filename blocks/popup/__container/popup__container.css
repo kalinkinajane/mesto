@@ -1,4 +1,4 @@
-.popup__container {
+.popup__form {
     position: relative;
     width: 430px;
     background-color: white;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 425px) {
-    .popup__container {
+    .popup__form {
         width:calc(100% - 10px);
     }
 }
