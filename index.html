@@ -25,8 +25,8 @@
         </div>
         <button class="profile__button-add" type="button" aria-label="Добавить"></button>
     </section>
-    <section class="places page__content">
-    </section>
+    <div class="places page__content">
+    </div>
     <footer class="footer page__content">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
@@ -40,7 +40,7 @@
             </div>
         </div>
     </template>
-    <section class="popup popup-profile">
+    <div class="popup popup-profile">
         <form class="popup__form" name="edit-name" novalidate>
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
@@ -52,8 +52,8 @@
             <span id="job-error" class="popup__error"></span>
             <button class="popup__button" type="submit">Сохранить</button>
         </form>
-    </section>
-    <section class="popup popup-add">
+    </div>
+    <div class="popup popup-add">
         <form class="popup__form popup__form_add" name="add-place" novalidate>
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
@@ -65,8 +65,8 @@
             <span id="link-error" class="popup__error"></span>
             <button class="popup__button " type="submit">Создать</button>
         </form>
-    </section>
-    <section class="popup popup-view">
+    </div>
+    <div class="popup popup-view">
         <div class="popup__container-view">
             <button class="popup__close popup__close_view" type="button" aria-label="Закрыть"></button>
             <figure>
@@ -74,7 +74,7 @@
                 <figcaption class="popup__caption"></figcaption>
             </figure>
         </div>
-    </section>
+    </div>
     <script src="./scripts/validate.js"></script>
     <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/script.js"></script>
