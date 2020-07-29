@@ -1,7 +1,7 @@
 const page = document.querySelector('.page');
 const popupProfile = page.querySelector('.popup-profile');
 const buttonEdit = page.querySelector('.profile__button-edit');
-const popupClose = page.querySelector('.popup__close');
+const popupClose = popupProfile.querySelector('.popup__close');
 const inputName = page.querySelector('.popup__input_type_name');
 const inputJob = page.querySelector('.popup__input_type_job');
 const profileName = page.querySelector('.profile__name');
@@ -12,7 +12,7 @@ const formAddElement = page.querySelector('.popup__form_add');
 const popupView = document.querySelector('.popup-view');
 const closeView = document.querySelector('.popup__close_view');
 const buttonAdd = page.querySelector('.profile__button-add');
-const closePopup = page.querySelector('.popup__close_add');
+const closePopup = popupAdd .querySelector('.popup__close');
 const inputPlace = page.querySelector('.popup__input_type_place-name');
 const inputLink = page.querySelector('.popup__input_type_link');
 const placesSection = document.querySelector('.places');
