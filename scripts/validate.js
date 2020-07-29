@@ -44,6 +44,7 @@ function toggleButton(inputElements, submitButton, inactiveButtonClass) {
     submitButton.classList.remove(inactiveButtonClass);
     submitButton.removeAttribute('disabled', true);
   }
+  return;
 };
 const enableValidation = (options) => {
   const formElements = Array.from(document.querySelectorAll(options.formSelector));
@@ -51,7 +52,6 @@ const enableValidation = (options) => {
   formElements.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
-      formElement.reset();
     });
     setEventListeners(formElement, options);
   });
@@ -61,11 +61,13 @@ const resetPopupValid = (popup, options) => {
   const form = popup.querySelector(options.formSelector);
   const submitButton = form.querySelector(options.submitButtonSelector);
   const inputElements = Array.from(form.querySelectorAll(options.inputSelector));
+  enableValidation(options);
   toggleButton(inputElements, submitButton);
   inputElements.forEach((input) => {
     hideInputError(form, input, options);
   });
 };
+
 const obj = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',

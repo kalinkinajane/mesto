@@ -41,30 +41,30 @@
         </div>
     </template>
     <section class="popup popup-profile">
-            <form class="popup__form" name="edit-name" novalidate>
-                <button class="popup__close" type="button" aria-label="Закрыть"></button>
-                <h3 class="popup__title">Редактировать профиль</h3>
-                <input type="text" id="name" name="name" class="popup__input popup__input_type_name" minlength="2"
-                    maxlength="40" required placeholder="Имя">
-                <span id="name-error" class="popup__error"></span>
-                <input type="text" id="job" name="job" class="popup__input popup__input_type_job" minlength="2"
-                    maxlength="200" required placeholder="О себе">
-                <span id="job-error" class="popup__error"></span>
-                <button class="popup__button" type="submit" disabled>Сохранить</button>
-            </form>
+        <form class="popup__form" name="edit-name" novalidate>
+            <button class="popup__close" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <input type="text" id="name" name="name" class="popup__input popup__input_type_name" minlength="2"
+                maxlength="40" required placeholder="Имя">
+            <span id="name-error" class="popup__error"></span>
+            <input type="text" id="job" name="job" class="popup__input popup__input_type_job" minlength="2"
+                maxlength="200" required placeholder="О себе">
+            <span id="job-error" class="popup__error"></span>
+            <button class="popup__button" type="submit">Сохранить</button>
+        </form>
     </section>
-    <section class="popup popup-add"> 
-            <form class="popup__form popup__form_add" name="add-place" novalidate>
-                <button class="popup__close popup__close_add" type="button" aria-label="Закрыть"></button>
+    <section class="popup popup-add">
+        <form class="popup__form popup__form_add" name="add-place" novalidate>
+            <button class="popup__close popup__close_add" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
-                <input type="text" id="place-name" name="place-name" class="popup__input popup__input_type_place-name"
-                    minlength="1" maxlength="30" required placeholder="Название">
-                <span id="place-name-error" class="popup__error"></span>
-                <input type="url" id="link" name="link" class="popup__input popup__input_type_link" required
-                    placeholder="Cсылка на картинку">
-                <span id="link-error" class="popup__error"></span>
-                <button class="popup__button " type="submit" disabled>Создать</button>
-            </form>
+            <input type="text" id="place-name" name="place-name" class="popup__input popup__input_type_place-name"
+                minlength="1" maxlength="30" required placeholder="Название">
+            <span id="place-name-error" class="popup__error"></span>
+            <input type="url" id="link" name="link" class="popup__input popup__input_type_link" required
+                placeholder="Cсылка на картинку">
+            <span id="link-error" class="popup__error"></span>
+            <button class="popup__button " type="submit">Создать</button>
+        </form>
     </section>
     <section class="popup popup-view">
         <div class="popup__container-view">
