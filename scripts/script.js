@@ -56,12 +56,6 @@ function deletePlace(evt) {
     const placeItem = evt.target.closest('.place');
     placeItem.remove();
 };
-// Отчистка форм
-function cleanForm() {
-    formAddElement.reset();
-    formElement.reset();
-    resetPopupValid(popupAdd, obj);
-}
 /*функция oткрытия popup-ов */
 function openModal(popup) {
     popup.classList.add('popup_open');
@@ -72,7 +66,6 @@ function openModal(popup) {
 /*функция закрытия popup-ов */
 function closeModal(popup) {
     popup.classList.remove('popup_open');
-    cleanForm();
     document.removeEventListener('keydown', toggleFormEsc);
     document.removeEventListener('mousedown', closeOverley);
 };
@@ -103,7 +96,6 @@ function formAddCard(evt) {
 function closeOverley(evt) {
     if (evt.target.classList.contains('popup_open')) {
         evt.target.classList.remove('popup_open');
-        cleanForm();
     }
 };
 
@@ -126,10 +118,15 @@ function viewImage(link, name) {
 
 buttonEdit.addEventListener('click', () => {
     openModal(popupProfile);
+    resetPopupValid(popupProfile, obj);
     inputName.value = profileName.textContent;
     inputJob.value = profileJob.textContent;
 });
-buttonAdd.addEventListener('click', () => openModal(popupAdd));
+buttonAdd.addEventListener('click', () =>{
+    openModal(popupAdd);
+    formAddElement.reset();
+    resetPopupValid(popupAdd, obj);
+});
 popupClose.addEventListener('click', () => closeModal(popupProfile));
 closePopup.addEventListener('click', () => closeModal(popupAdd));
 formElement.addEventListener('submit', formSubmitHandler);
