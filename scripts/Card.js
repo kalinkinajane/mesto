@@ -1,14 +1,15 @@
-import { popupImage, popupCaption, popupView, closeView } from './index.js';
+import { popupImage, popupCaption, popupView, closeView } from './constants.js';
 import { openModal, closeModal } from './utils.js';
 
 export class Card {
-    constructor(data) {
+    constructor(data, cardSelector) {
         this._name = data.name;
         this._link = data.link;
+        this._cardSelector = cardSelector;
     }
     _getTemplate() {
         const cardElement = document
-            .querySelector('.place-element')
+            .querySelector(this._cardSelector)
             .content
             .querySelector('.place')
             .cloneNode(true);
@@ -19,8 +20,9 @@ export class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.place__title').textContent = this._name;
-        this._element.querySelector('.place__image').src = this._link;
-        this._element.querySelector('.place__image').alt = this._name;
+        const imagePlace = this._element.querySelector('.place__image');
+        imagePlace.src = this._link;
+        imagePlace.alt = this._name;
 
         return this._element;
     }
@@ -30,6 +32,7 @@ export class Card {
     }
     _remove() {
         this._element.remove();
+        this._element = null;
     };
     _setEventListeners() {
         this._element.querySelector('.place__image').addEventListener('click', () => {

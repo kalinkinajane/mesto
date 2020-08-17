@@ -1,4 +1,3 @@
-// import { options } from './index.js';
 
 export class FormValidator {
   constructor(options, formElement) {
