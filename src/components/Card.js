@@ -1,11 +1,10 @@
-import { popupImage, popupCaption, popupView, closeView } from './constants.js';
-import { openModal, closeModal } from './utils.js';
-
 export class Card {
-    constructor(data, cardSelector) {
+    constructor({ data, handleCardClick }, cardSelector) {
         this._name = data.name;
         this._link = data.link;
+        this._handleCardClick = handleCardClick;
         this._cardSelector = cardSelector;
+        this.isCard = data;
     }
     _getTemplate() {
         const cardElement = document
@@ -18,16 +17,15 @@ export class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
         this._element.querySelector('.place__title').textContent = this._name;
         const imagePlace = this._element.querySelector('.place__image');
         imagePlace.src = this._link;
         imagePlace.alt = this._name;
-
+        this._setEventListeners();
         return this._element;
     }
 
-    _likePlace = (evt) => {
+    _likePlace (evt) {
         evt.target.classList.toggle('place__like_active');
     }
     _remove() {
@@ -36,19 +34,12 @@ export class Card {
     };
     _setEventListeners() {
         this._element.querySelector('.place__image').addEventListener('click', () => {
-            this._handleOpenPopup();
-        });
-        closeView.addEventListener('click', () => {
-            closeModal(popupView);
+            this._handleCardClick(this.isCard);
         });
         this._element.querySelector('.place__remove').addEventListener('click', () => { this._remove() });
         this._element.querySelector('.place__like').addEventListener('click', (evt) => {
             this._likePlace(evt)
         });
     };
-    _handleOpenPopup() {
-        popupImage.src = this._link;
-        popupCaption.textContent = this._name;
-        openModal(popupView);
-    }
 };
+

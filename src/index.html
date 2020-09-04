@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Страница о путешествиях">
     <meta name="keywords" content="Туристические места России, байкал, камчатка, корелия, выборг,приморский край">
-    <link rel="stylesheet" href="./pages/index.css">
+   
     <title>Места</title>
 </head>
 
@@ -57,7 +57,7 @@
         <form class="popup__form popup__form_add" name="add-place" novalidate>
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
-            <input type="text" id="place-name" name="place-name" class="popup__input popup__input_type_place-name"
+            <input type="text" id="place-name" name="name" class="popup__input popup__input_type_place-name"
                 minlength="1" maxlength="30" required placeholder="Название">
             <span id="place-name-error" class="popup__error"></span>
             <input type="url" id="link" name="link" class="popup__input popup__input_type_link" required
@@ -75,7 +75,7 @@
             </figure>
         </div>
     </div>
-    <script src="./scripts/index.js" type="module"></script>
+
 </body>
 
 </html>
