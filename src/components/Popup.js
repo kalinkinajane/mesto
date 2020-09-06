@@ -8,6 +8,7 @@ export class Popup {
         this._popup.addEventListener('mousedown', (evt) => {
             this._handleOverleyClose(evt)
         });
+
     }
     close() {
         this._popup.classList.remove('popup_open');

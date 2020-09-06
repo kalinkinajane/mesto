@@ -4,7 +4,7 @@ export class Card {
         this._link = data.link;
         this._handleCardClick = handleCardClick;
         this._cardSelector = cardSelector;
-        this.isCard = data;
+        this._cardData = data;
     }
     _getTemplate() {
         const cardElement = document
@@ -25,7 +25,7 @@ export class Card {
         return this._element;
     }
 
-    _likePlace (evt) {
+    _likePlace(evt) {
         evt.target.classList.toggle('place__like_active');
     }
     _remove() {
@@ -34,12 +34,12 @@ export class Card {
     };
     _setEventListeners() {
         this._element.querySelector('.place__image').addEventListener('click', () => {
-            this._handleCardClick(this.isCard);
+            this._handleCardClick(this._cardData);
         });
         this._element.querySelector('.place__remove').addEventListener('click', () => { this._remove() });
         this._element.querySelector('.place__like').addEventListener('click', (evt) => {
             this._likePlace(evt)
         });
     };
-};
+}
 

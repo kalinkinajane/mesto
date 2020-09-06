@@ -18,23 +18,36 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
-                loader: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { importLoaders: 1 } }, 'postcss-loader']
-            },
-            {
-                test: /\.(png|svg|jpg|gif|woff2|woff)$/,
-                loader: 'file-loader'
-            },
-            {
-                test: /\.html$/,
-                loader: 'html-loader',
+                test: /\.(png|svg|jpg|gif)$/,
+                loader: 'file-loader?name=./images/[name].[ext]'
+           },
+           {
+                test: /\.(eot|ttf|woff|woff2)$/,
+                loader: 'file-loader?name=./vendor/[name].[ext]',
+           },
+           {
+            test: /\.css$/,
+            loader: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1
+                }
+              },
+              'postcss-loader'
+            ],
+           },
+            { 
+                test: /\.html$/, 
+                loader: 'html-loader', 
             },
         ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        }),
-        new MiniCssExtractPlugin()
-    ]
-}
+        },
+        plugins: [
+            new HtmlWebpackPlugin({
+                template: './src/index.html'
+            }),
+            new MiniCssExtractPlugin()
+        ]
+};
