@@ -1,5 +1,3 @@
-.popup__input-container{
-    width: 100%;
-    border: none;
-    padding: 0;
-}
+.popup__input-conteiner{
+    margin: 20px 0 10px 0;
+  }

@@ -1,6 +1,7 @@
 @import url(./__form/popup__form.css);
 @import url(./__close/popup__close.css);
 @import url(./__title/popup__title.css);
+@import url(./__input-container/popup__input-container.css);
 @import url(./__input/popup__input.css);
 @import url(./__error/popup__error.css);
 @import url(./__button/popup__button.css);
@@ -20,4 +21,15 @@
   background-color: rgba(0, 0, 0, .5);
   justify-content: center;
   align-items: center;
+
 }
+
+.popup__container-delete{
+  position: relative;
+    width: 430px;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 34px 36px 36px;
+}
+

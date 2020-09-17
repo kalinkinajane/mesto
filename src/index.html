@@ -14,13 +14,15 @@
         <img class="header__logo" src="./images/logo.svg" alt="места России">
     </header>
     <section class="profile page__content">
-        <img class="profile__avatar" src="./images/image-avatar.jpg" alt="Жак-Ив Кусто">
+        <div class="profile__edit-avatar">
+            <img class="profile__avatar" src ="#" alt="#">
+        </div>
         <div class="profile__info">
             <div class=profile__conteiner>
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <h1 class="profile__name"></h1>
                 <button class="profile__button-edit" type="button" aria-label="Редактировать"></button>
             </div>
-            <p class="profile__job">Исследователь океана</p>
+            <p class="profile__about"></p>
         </div>
         <button class="profile__button-add" type="button" aria-label="Добавить"></button>
     </section>
@@ -35,7 +37,11 @@
             <img class="place__image" src="#" alt="">
             <div class="place__text">
                 <h2 class="place__title"></h2>
-                <button class="place__like" type="button" aria-label="Нравится"></button>
+                <div class = like>
+                    <button class="place__like" type="button" aria-label="Нравится"></button>
+                    <span class = "place__like-count">0</span>
+                </div>
+               
             </div>
         </div>
     </template>
@@ -46,9 +52,9 @@
             <input type="text" id="name" name="name" class="popup__input popup__input_type_name" minlength="2"
                 maxlength="40" required placeholder="Имя">
             <span id="name-error" class="popup__error"></span>
-            <input type="text" id="job" name="job" class="popup__input popup__input_type_job" minlength="2"
+            <input type="text" id="about" name="about" class="popup__input popup__input_type_about" minlength="2"
                 maxlength="200" required placeholder="О себе">
-            <span id="job-error" class="popup__error"></span>
+                <span id="about-error" class="popup__error"></span>
             <button class="popup__button" type="submit">Сохранить</button>
         </form>
     </div>
@@ -62,7 +68,7 @@
             <input type="url" id="link" name="link" class="popup__input popup__input_type_link" required
                 placeholder="Cсылка на картинку">
             <span id="link-error" class="popup__error"></span>
-            <button class="popup__button " type="submit">Создать</button>
+            <button class="popup__button" type="submit">Создать</button>
         </form>
     </div>
     <div class="popup popup-view">
@@ -74,7 +80,26 @@
             </figure>
         </div>
     </div>
-  
+    <div class="popup popup-delete">
+        <div class="popup__container-delete">
+            <button class="popup__close" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__title">Вы уверены?</h3>
+            <button class="popup__button" type="submit">Да</button>
+        </div>
+    </div>
+    <div class="popup popup-avatar">
+        <form class="popup__form popup__form_avatar" name="avatar" novalidate>
+            <button class="popup__close" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__title">Обновить аватар</h3>
+            <div class= "popup__input-conteiner">
+            <input type="url" id="link-avatar" name="avatar" class="popup__input popup__input_type_link-avatar" required
+                placeholder="Cсылка на картинку">
+            <span id="link-avatar-error" class="popup__error"></span>
+            </div>
+            <button class="popup__button" type="submit">Сохранить</button>
+        </form>
+    </div>
+
 </body>
 
 </html>

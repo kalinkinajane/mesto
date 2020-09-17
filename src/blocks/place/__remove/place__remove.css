@@ -7,8 +7,9 @@
     border: none;
    top: 18px;
    right: 15px;
-
-
+}
+.place__remove-none{
+    display: none;
 }
 .place__remove:hover, .place__remove:active, .place__remove:focus {
     cursor: pointer;
