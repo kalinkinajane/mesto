@@ -313,7 +313,7 @@ api.getItems().then((data) => {
                 handleDeleteClick: (id) => {
                     popupDel.setSubmitAction(() => {
                         api.removeCard(id)
-                        .then(() => {
+                        .then((res) => {
                             card.remove();
                         })
                     })

@@ -38,11 +38,11 @@ function renderLoading(isLoading) {
     }
 }
 
-const userInfo = new UserInfo( {
-        nameSelector: '.profile__name',
-        aboutSelector: '.profile__about',
-        avatarSelector: '.profile__avatar'
-    });
+const userInfo = new UserInfo({
+    nameSelector: '.profile__name',
+    aboutSelector: '.profile__about',
+    avatarSelector: '.profile__avatar'
+});
 
 
 // Попап просмотра изображения
@@ -66,67 +66,77 @@ api.getUserInfo().then((data) => {
     const myId = user._id;
     console.log(myId)
     userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
-api.getItems().then((data) => {
-    const cardList = new Section({
-        items: data,
-        renderer: (items) => {
-           const card = createCard(items, myId);
-            const cardElement = card.generateCard();
-            cardList.addItem(cardElement);
-        }
-    }, placesSection )
-    cardList.renderItems();
-}).catch((err) => console.log(`Ошибка: ${err}`))
+    api.getItems().then((data) => {
+        const cardList = new Section({
+            items: data,
+            renderer: (items) => {
+                const card = createCard(items, myId);
+                const cardElement = card.generateCard();
+                cardList.addItem(cardElement);
+            }
+        }, placesSection)
+        cardList.renderItems();
+    }).catch((err) => console.log(`Ошибка: ${err}`))
+
+    // Попап добавления карточки
+    const popupAddForm = new PopupWithForm(
+        '.popup-add', (formData) => {
+            console.log(formData)
+            api.addnewCard(formData).then((res) => {
+                const card = createCard(res, myId)
+                const cardElement = card.generateCard();
+                newCardList.addItem(cardElement);
+            }).then(() => {
+                popupAddForm.close();
+            }).catch((err) => console.log(`Ошибка: ${err}`))
+        });
+
+    popupAddForm.setEventListeners();
+    buttonAdd.addEventListener('click', () => {
+        popupAddForm.open();
+        formAdd.resetPopupValid(popupAdd);
+    });
 })
 
-const createCard = (items, myId) =>{
+const createCard = (items, myId) => {
     const card = new Card({
         data: items,
-        myId:  myId,
+        myId: myId,
         ownerId: items.owner._id,
         handleCardClick: (item) => { imagePopup.open(item.name, item.link) },
         handleLikeClick: (id) => {
             console.log(id)
+            // ID карточки выводится в консоль
             api.addLikes(id)
-            .then((data) => {
-                console.log(data)
-                card.updateLikes(data)
-            }).catch((err) => console.log(`Ошибка: ${err}`))
-         },
-         handleDislikeClick: (id)=> {
+                .then((data) => {
+                    console.log(data.likes)
+                    card.updateLikes(data.likes)
+                }).catch((err) => console.log(`Ошибка: ${err}`))
+        },
+        handleDislikeClick: (id) => {
             api.deleteLikes(id)
-            .then((data) => {
-                console.log(data)
-                card.updateLikes(data)
-            }).catch((err) => console.log(`Ошибка: ${err}`))
-         },
+                .then((data) => {
+                    console.log(data)
+                    card.updateLikes()
+                }).catch((err) => console.log(`Ошибка: ${err}`))
+        },
         handleDeleteClick: (id) => {
             popupDel.setSubmitAction(() => {
                 api.removeCard(id)
-                .then(() => {
-                    card.remove();
-                })
-            }).catch((err) => console.log(`Ошибка: ${err}`))
+                    .then((data) => {
+                        console.log(data)
+                        card.remove(data);
+                    }).catch((err) => console.log(`Ошибка: ${err}`)).finally(() => {
+                        popupDel.close();
+                    })
+            })
             popupDel.open();
         }
-    },'.place-element');
+    }, '.place-element');
+
     return card;
 }
-// Попап добавления карточки
-const popupAddForm = new PopupWithForm(
-    '.popup-add', (formData) => {
-        console.log(formData)
-        api.addnewCard(formData).then((res) => {
-            // не совсем понимаю как сюда добавить свой ID
-            const card = createCard(res, myId)
-            const cardElement = card.generateCard(); 
-            newCardList.addItem(cardElement); 
-        }).then(() => {
-            popupAddForm.close();
-        }).catch((err) => console.log(`Ошибка: ${err}`))
-    });
 
-popupAddForm.setEventListeners();
 
 
 // Попап редактирования профиля
@@ -166,10 +176,7 @@ buttonEdit.addEventListener('click', () => {
     formProf.resetPopupValid(popupProfile);
 });
 
-buttonAdd.addEventListener('click', () => {
-    popupAddForm.open();
-    formAdd.resetPopupValid(popupAdd);
-});
+
 editAvatar.addEventListener('click', () => {
     popupAvatar.open();
     formAva.resetPopupValid(popupAva)
