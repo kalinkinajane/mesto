@@ -42,19 +42,19 @@ export class Api {
         })
 
     }
-    editAvatar(link){
-       return fetch ( 'https://mesto.nomoreparties.co/v1/cohort-15/users/me/avatar' ,{
-        method: 'PATCH',
-        headers:  this._headers,
-        body: JSON.stringify({
-            avatar : link.avatar
+    editAvatar(link) {
+        return fetch('https://mesto.nomoreparties.co/v1/cohort-15/users/me/avatar', {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: link.avatar
+            })
+        }).then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
         })
-    }).then((res) => {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-    })
     }
     addnewCard(data) {
         return fetch(this._url, {
@@ -83,13 +83,11 @@ export class Api {
             return Promise.reject(`Ошибка: ${res.status}`)
         });
     }
-
     addLikes(id) {
         return fetch(`https://mesto.nomoreparties.co/v1/cohort-15/cards/likes/${id}`, {
             method: "PUT",
             headers: this._headers,
         }).then((res) => {
-
             if (res.ok) {
                 return res.json();
             }
@@ -101,15 +99,10 @@ export class Api {
             method: "DELETE",
             headers: this._headers,
         }).then((res) => {
-
             if (res.ok) {
                 return res.json();
             }
             return Promise.reject(`Ошибка: ${res.status}`)
         });
     }
-    // changeLikeCardStatus(id){
-    //     return Promise.all([this.addLikes(id), this.deleteLikes(id)])
-        
-    // }
 }

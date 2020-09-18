@@ -5,16 +5,14 @@ export class PopupConfirm extends Popup {
         this._handleSubmitCallback = handleSubmitCallback
         this._formSubmit = this._popup.querySelector('.popup__form');
     }
-
     setSubmitAction(submitAction) {
         this._handleSubmitCallback = submitAction;
-      }
-      setEventListeners() {
+    }
+    setEventListeners() {
         super.setEventListeners();
         this._formSubmit.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._handleSubmitCallback();
-           
         })
     }
 }
