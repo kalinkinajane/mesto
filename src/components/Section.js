@@ -5,12 +5,17 @@ export class Section {
         this._conteiner = containerSelector;
 
     }
-    addItem(element) {
-        this._conteiner.prepend(element);
+    addItem(element, isCard) {
+        if(isCard){
+            this._conteiner.prepend(element);
+        }else{
+            this._conteiner.append(element); 
+        }
+        
     }
     renderItems() {
         this._initialCards.forEach(item => {
             this._renderer(item);
         })
     }
-} 
+}

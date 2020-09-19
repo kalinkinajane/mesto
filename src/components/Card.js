@@ -69,7 +69,6 @@ export class Card {
             this._handleCardClick(this._cardData);
         });
         this._element.querySelector('.place__remove').addEventListener('click', () => {
-            console.log(this._cardId);
             this._handleDeleteClick(this._cardId);
         });
 

@@ -36,7 +36,10 @@ const userInfo = new UserInfo({
 function renderLoading(popup, isLoading) {
     if (isLoading) {
         popup.querySelector('.popup__button').innerText = 'Сохранение...'
-    } else {
+    } else if (popup === popupAdd) {
+        popup.querySelector('.popup__button').innerText = 'Создать'
+    }
+    else {
         popup.querySelector('.popup__button').innerText = 'Сохранить'
     }
 }
@@ -73,18 +76,6 @@ const popupAvatar = new PopupWithForm('.popup-avatar', (link) => {
     })
 });
 popupAvatar.setEventListeners();
-// Открытие Попапов редактирования профиля и аватара
-buttonEdit.addEventListener('click', () => {
-    const info = userInfo.getUserInfo();
-    inputName.value = info.name;
-    inputAbout.value = info.about;
-    popupProf.open();
-    formProf.resetPopupValid(popupProfile);
-});
-editAvatar.addEventListener('click', () => {
-    popupAvatar.open();
-    formAva.resetPopupValid(popupAva)
-});
 
 // Получение данных и отрисовка на странице
 api.getUserInfo().then((userData) => {
@@ -127,13 +118,16 @@ api.getUserInfo().then((userData) => {
         // Попап добавления карточки
         const popupAddForm = new PopupWithForm(
             '.popup-add', (formData) => {
+                renderLoading(popupAdd, true)
                 api.addnewCard(formData).then((res) => {
                     const card = createCard(res, myId)
                     const cardElement = card.generateCard();
-                    cardList.addItem(cardElement);
+                    cardList.addItem(cardElement, true);
                 }).then(() => {
                     popupAddForm.close();
-                }).catch((err) => console.log(`Ошибка: ${err}`))
+                }).catch((err) => console.log(`Ошибка: ${err}`)).finally(() => {
+                    renderLoading(popupAdd, false)
+                })
             });
         // Открытие попапа добавления карточки
         popupAddForm.setEventListeners();
@@ -147,12 +141,24 @@ api.getUserInfo().then((userData) => {
             renderer: (items) => {
                 const card = createCard(items, myId);
                 const cardElement = card.generateCard();
-                cardList.addItem(cardElement);
+                cardList.addItem(cardElement, false);
             }
         }, placesSection)
         cardList.renderItems();
+        // Открытие Попапов редактирования профиля и аватара
+        buttonEdit.addEventListener('click', () => {
+            const info = userInfo.getUserInfo();
+            inputName.value = info.name;
+            inputAbout.value = info.about;
+            popupProf.open();
+            formProf.resetPopupValid(popupProfile);
+        });
+        editAvatar.addEventListener('click', () => {
+            popupAvatar.open();
+            formAva.resetPopupValid(popupAva)
+        });
     }).catch((err) => console.log(`Ошибка: ${err}`))
-
+    
 }).catch((err) => console.log(`Ошибка: ${err}`))
     .finally(() => {
         formProf.enableValidation();

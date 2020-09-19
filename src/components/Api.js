@@ -11,7 +11,10 @@ export class Api {
             method: "GET",
             headers: this._headers
         }).then((res) => {
-            return res.json();
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
         });
     }
 
@@ -24,7 +27,7 @@ export class Api {
                 return res.json();
             }
             return Promise.reject(`Ошибка: ${res.status}`)
-        }).catch((err) => console.log(`Ошибка: ${err}`))
+        })
     }
     patchUserInfo(data) {
         return fetch('https://mesto.nomoreparties.co/v1/cohort-15/users/me', {
